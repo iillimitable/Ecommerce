@@ -1,13 +1,13 @@
 <%- layout('layouts/boilerplate') -%>
 <style>
-  .form1 {
+  .needs-validation {
     margin-top: 6.5rem;
     justify-content: center;
     max-width: 50%;
   }
 
   /* Style for the form container */
-.form1 {
+.needs-validation {
   max-width: 400px;
   margin: 150px auto;
   padding: 20px;
@@ -67,32 +67,35 @@
 
 
 
-<form class="form1" action="/products" method="POST">
+<form class="needs-validation" id="novalidate" action="/products" method="POST" novalidate>
 
   <h3>Add new products</h3>
 
   <div class="mb-3">
     <label for="name" class="form-label"> product Name</label>
-    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="name" name="name"/>
+    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="name" name="name"/ required>
   </div>
 
   <div class="mb-3">
     <label for="img" class="form-label">image</label>
-    <input type="text" class="form-control" id="img" placeholder="image url" name="img" />
+    <input type="text" class="form-control" id="img" placeholder="image url" name="img" / required>
   </div>
 
   <div class="mb-3">
     <label for="price" class="form-label">price</label>
     <div class="input-group">
       <span class="input-group-text">$</span>
-      <input type="text" class="form-control" id="img" placeholder="price" name="price" />
+      <input type="text" class="form-control" id="img" placeholder="price" name="price" / required>
     </div>
 
   </div>
   <div class="mb-3">
     <label for="desc" class="form-label">descripation</label>
-    <input type="text" class="form-control" id="img" placeholder="descraption" name="desc" />
+    <input type="text" class="form-control" id="img" placeholder="descraption" name="desc" / required>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+
+
  

@@ -1,25 +1,86 @@
 <%- layout('layouts/boilerplate') -%>
 <style>
-  .justify-content-center{
+  .justify-content-center {
     margin-top: 5.5rem;
   }
-</style> 
+  .card {
+    cursor: pointer;
 
+    width: 271px;
 
-    <section class="d-flex flex-wrap gap-5 justify-content-center">
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  }
+  .card-body {
+    padding: 17px;
+  }
+  .card:hover {
+    opacity: 0.8;
+    transition: 0.2s ease-in-out;
+  }
 
-        <% for( let item of products ) { %>
+  .btn {
+    --color: #000000;
+    font-family: inherit;
+    display: inline-block;
+    width: 6em;
+    height: 2.3em;
+    /* line-height: 0.5em; */
+    overflow: hidden;
+    margin: 0px;
+    font-size: 17px;
+    z-index: 1;
+    color: #ffffff;
+    border: 2px solid #828384;
+    border-radius: 9px;
+    position: relative;
+  }
 
-            <div class="card" style="width: 18rem;">
-                <img src="<%= item.img  %>" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><%= item.name  %></h5>
-                  <h5>$ <%= item.price  %></h5>
-                  <p class="card-text"><%= item.desc  %></p>
-                  <a href="/products/<%= item._id %>" class="btn btn-primary">Buy now</a>
-                </div>
-              </div>
-        
-        <% } %>
-    </section>
+  .btn::before {
+    position: absolute;
+    content: "";
+    background: var(--color);
+    width: 150px;
+    height: 200px;
+    z-index: -1;
+    border-radius: 50%;
+  }
 
+  .btn:hover {
+    color: white;
+  }
+
+  .btn:before {
+    top: 100%;
+    left: 100%;
+    transition: 0.3s all;
+  }
+
+  .btn:hover::before {
+    top: -30px;
+    left: -30px;
+  }
+</style>
+
+<section class="d-flex flex-wrap gap-5 justify-content-center">
+  <% for( let product of products) { %>
+      <div class="card" style="width: 18rem;">
+          <img src="<%= product.img %>" class="card-img-top" alt="...">
+          <span class="badge text-bg-light position-absolute " style="top:26%; left:78%">
+              <%= product.avgRating %> &star; | <%= product.review.length %>
+          </span>
+          <div class="card-body">
+              <h5 class="card-title">
+                  <%= product.name %>
+              </h5>
+              <h5>$ <%= product.price %>
+              </h5>
+              <p class="card-text">
+                  <%= product.desc %>
+              </p>
+              <a href="/products/<%= product._id %>" class="btn btn-primary btn-sm">Buy Now</a>
+          </div>
+      </div>
+      <% } %>
+</section>

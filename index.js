@@ -8,6 +8,9 @@ const PORT = 5000
 
 
 
+
+
+
 app.engine('ejs',ejsMate)
 
 app.set('view engine','ejs')
@@ -23,10 +26,25 @@ mongoose.connect('mongodb://127.0.0.1:27017/E-commerce')
 .catch(e => console.log(e))
 
 
+
+
+
+
+
+
+
+
+
+
+
+//....................................routes
 const productsRoutes = require('./routes/products')
+const reviewsRoutes = require('./routes/review')
 
 
 app.use(productsRoutes)
+app.use(reviewsRoutes)
+
 
 app.get('/',(req,res)=>{
     

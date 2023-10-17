@@ -22,7 +22,18 @@ const productSchema = new mongoose.Schema({
     desc:{
         type:String,
         trim:true
-    }
+    },
+    rating:{
+        type:Number,
+        default:0,
+    },
+    review:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'Review'
+
+        }
+    ]
 })
 
 const Product = mongoose.model('Product',productSchema)
